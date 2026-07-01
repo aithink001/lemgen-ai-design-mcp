@@ -19,6 +19,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
+    "prepare": "npm run build",
     "typecheck": "tsc --noEmit",
     "inspect": "npx @modelcontextprotocol/inspector node bin/lemgen-mcp.js",
     "smoke": "node scripts/smoke-mcp-client.mjs",

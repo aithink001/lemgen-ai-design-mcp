@@ -1,0 +1,68 @@
+{
+  "name": "lemgen",
+  "version": "0.1.0",
+  "description": "LemGen AI Design MCP — search curated image/video prompts, enhance prompts, and generate with LemGen from Claude Code, Cursor, Codex, OpenClaw, and any MCP host.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "lemgen": "bin/lemgen-mcp.js",
+    "lemgen-mcp": "bin/lemgen-mcp.js"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "data/",
+    "plugin/",
+    "openclaw/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "inspect": "npx @modelcontextprotocol/inspector node bin/lemgen-mcp.js",
+    "smoke": "node scripts/smoke-mcp-client.mjs",
+    "check:brand": "node scripts/check-brand-clean.mjs",
+    "validate": "pnpm typecheck && pnpm build && pnpm check:brand && pnpm smoke"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude-code",
+    "codex",
+    "cursor",
+    "openclaw",
+    "ai-image-generation",
+    "ai-video-generation",
+    "prompt-engineering",
+    "gpt-image",
+    "nano-banana",
+    "seedance",
+    "midjourney"
+  ],
+  "author": {
+    "name": "LemGen",
+    "url": "https://lemgen.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aithink001/lemgen-ai-design-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aithink001/lemgen-ai-design-mcp/issues"
+  },
+  "homepage": "https://lemgen.org",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

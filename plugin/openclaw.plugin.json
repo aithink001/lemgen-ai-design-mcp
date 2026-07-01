@@ -1,0 +1,13 @@
+{
+  "name": "lemgen-ai-design",
+  "displayName": "LemGen AI Design",
+  "description": "AI image/video prompt library and LemGen generation tools for OpenClaw.",
+  "version": "0.1.0",
+  "author": "LemGen",
+  "homepage": "https://lemgen.org",
+  "mcp": {
+    "command": "npx",
+    "args": ["-y", "lemgen@latest"]
+  },
+  "skills": ["../openclaw/SKILL.md"]
+}

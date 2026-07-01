@@ -1,0 +1,9 @@
+{
+  "name": "lemgen",
+  "description": "LemGen visual creative expert — search curated prompts, enhance ideas, and generate AI images/videos from Claude Code.",
+  "version": "0.1.0",
+  "author": {
+    "name": "LemGen",
+    "url": "https://lemgen.org"
+  }
+}

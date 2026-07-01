@@ -1,0 +1,6 @@
+{
+  "lemgen": {
+    "command": "npx",
+    "args": ["-y", "lemgen@latest"]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "lemgen-marketplace",
+  "owner": {
+    "name": "LemGen",
+    "url": "https://lemgen.org"
+  },
+  "plugins": [
+    {
+      "name": "lemgen",
+      "source": "./plugin",
+      "description": "LemGen MCP: curated AI image/video prompt library, prompt enhancement, and generation tools.",
+      "version": "0.1.0",
+      "author": {
+        "name": "LemGen"
+      },
+      "homepage": "https://lemgen.org",
+      "repository": "https://github.com/aithink001/lemgen-ai-design-mcp"
+    }
+  ]
+}

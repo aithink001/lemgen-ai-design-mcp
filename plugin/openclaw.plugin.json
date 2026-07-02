@@ -7,7 +7,7 @@
   "homepage": "https://lemgen.org",
   "mcp": {
     "command": "npx",
-    "args": ["-y", "lemgen@latest"]
+    "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"]
   },
   "skills": ["../openclaw/SKILL.md"]
 }

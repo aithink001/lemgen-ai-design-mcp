@@ -1,5 +1,6 @@
 import type { ApiEnvelope, LemgenGeneration } from '../types.js';
 import type { LemgenConfig } from '../config.js';
+import type { PromptLanguage } from './prompt-enhancer.js';
 
 export class LemgenApiError extends Error {
   constructor(message: string) {
@@ -78,7 +79,7 @@ export class LemgenApiClient {
   async promptTool(params: {
     action: 'translate' | 'improve' | 'polish';
     text: string;
-    targetLanguage?: 'zh' | 'en';
+    targetLanguage?: PromptLanguage;
     mediaType?: 'image' | 'video';
     model?: string;
     aspectRatio?: string;

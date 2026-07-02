@@ -1,6 +1,6 @@
 {
   "lemgen": {
     "command": "npx",
-    "args": ["-y", "lemgen@latest"]
+    "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"]
   }
 }

@@ -13,6 +13,54 @@ const STYLE_HINTS: Record<string, string> = {
     'minimal composition, restrained palette, generous negative space, refined details',
 };
 
+export const PROMPT_LANGUAGE_CODES = [
+  'en',
+  'zh',
+  'ja',
+  'ko',
+  'es',
+  'fr',
+  'de',
+  'pt',
+  'it',
+  'nl',
+  'ru',
+  'ar',
+  'hi',
+  'id',
+  'vi',
+  'th',
+  'tr',
+  'pl',
+] as const;
+
+export type PromptLanguage = (typeof PROMPT_LANGUAGE_CODES)[number];
+
+export const PROMPT_LANGUAGES: Record<PromptLanguage, string> = {
+  en: 'English',
+  zh: 'Chinese',
+  ja: 'Japanese',
+  ko: 'Korean',
+  es: 'Spanish',
+  fr: 'French',
+  de: 'German',
+  pt: 'Portuguese',
+  it: 'Italian',
+  nl: 'Dutch',
+  ru: 'Russian',
+  ar: 'Arabic',
+  hi: 'Hindi',
+  id: 'Indonesian',
+  vi: 'Vietnamese',
+  th: 'Thai',
+  tr: 'Turkish',
+  pl: 'Polish',
+};
+
+function languageName(code: PromptLanguage = 'en') {
+  return PROMPT_LANGUAGES[code] || PROMPT_LANGUAGES.en;
+}
+
 export function enhancePrompt(params: {
   idea: string;
   style?: string;
@@ -49,12 +97,12 @@ Output: professional, high-resolution, production-ready.`;
 export function promptTool(params: {
   action: 'translate' | 'improve' | 'polish';
   text: string;
-  targetLanguage?: 'zh' | 'en';
+  targetLanguage?: PromptLanguage;
   mediaType?: 'image' | 'video';
 }) {
   const text = params.text.trim();
   if (params.action === 'translate') {
-    const target = params.targetLanguage === 'zh' ? 'Chinese' : 'English';
+    const target = languageName(params.targetLanguage);
     return `Translate the following AI ${params.mediaType || 'image'} prompt into ${target}, preserving model instructions, camera terms, aspect ratio, and formatting:\n\n${text}`;
   }
   if (params.action === 'polish') {

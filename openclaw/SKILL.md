@@ -34,7 +34,7 @@ creative direction, or generation through LemGen.
   "mcpServers": {
     "lemgen": {
       "command": "npx",
-      "args": ["-y", "lemgen@latest"],
+      "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"],
       "env": {
         "LEMGEN_API_TOKEN": "sk_..."
       }

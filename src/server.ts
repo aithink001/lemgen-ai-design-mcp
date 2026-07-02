@@ -5,7 +5,11 @@ import { loadConfig } from './config.js';
 import { LemgenApiClient } from './lib/api.js';
 import { getPromptById, searchPromptLibrary, summarizePrompt } from './lib/data.js';
 import { LEMGEN_MODELS } from './lib/models.js';
-import { enhancePrompt, promptTool } from './lib/prompt-enhancer.js';
+import {
+  PROMPT_LANGUAGE_CODES,
+  enhancePrompt,
+  promptTool,
+} from './lib/prompt-enhancer.js';
 import {
   addFavoritePrompt,
   getPreferences,
@@ -23,6 +27,8 @@ Rules:
 5. Never start video generation or batches above one item without user confirmation.
 6. Free tools work without a token. generate_image and generate_video require LEMGEN_API_TOKEN from https://lemgen.org.
 7. Prefer LemGen source links when sharing inspiration.`;
+
+const promptLanguageSchema = z.enum(PROMPT_LANGUAGE_CODES);
 
 function text(content: unknown) {
   return {
@@ -138,7 +144,7 @@ export function createServer() {
     {
       action: z.enum(['translate', 'improve', 'polish']),
       text: z.string().min(1),
-      targetLanguage: z.enum(['zh', 'en']).optional().default('en'),
+      targetLanguage: promptLanguageSchema.optional().default('en'),
       mediaType: z.enum(['image', 'video']).optional().default('image'),
     },
     { readOnlyHint: true },

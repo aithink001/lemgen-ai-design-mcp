@@ -13,6 +13,7 @@
     "bin/",
     "dist/",
     "data/",
+    "docs/",
     "plugin/",
     "openclaw/"
   ],

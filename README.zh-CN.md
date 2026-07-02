@@ -1,41 +1,57 @@
-<h1 align="center">LemGen AI Design MCP</h1>
+<h1 align="center">
+  LemGen AI Design MCP
+</h1>
 
 <p align="center">
-  <strong>把 Claude Code、Cursor、Codex、Windsurf、Roo Code、OpenClaw 变成视觉创意助手。</strong>
+  <strong>让 Claude Code、Cursor、Codex、Windsurf、Roo Code、OpenClaw 和所有 MCP Agent 拥有视觉创作能力。</strong>
   <br>
-  <sub>4,533 条精选图片/视频提示词 · GPT Image · Nano Banana · Seedance · Midjourney · 提示词增强 · 本地偏好 · LemGen 生成工具</sub>
+  <sub>4,533 条精选图片/视频提示词 · 18 种提示词语言 · GPT Image · Nano Banana · Seedance · Midjourney · LemGen 生成 API</sub>
 </p>
 
 <p align="center">
   <a href="https://github.com/aithink001/lemgen-ai-design-mcp/actions"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/aithink001/lemgen-ai-design-mcp/validate.yml?branch=main&style=flat-square"></a>
-  <a href="https://github.com/aithink001/lemgen-ai-design-mcp"><img alt="MCP" src="https://img.shields.io/badge/MCP-Server-blue?style=flat-square"></a>
-  <a href="https://lemgen.org"><img alt="LemGen" src="https://img.shields.io/badge/Powered%20by-LemGen-111?style=flat-square"></a>
-  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square"></a>
+  <img alt="MCP Server" src="https://img.shields.io/badge/Type-MCP_Server-blue?style=flat-square">
+  <img alt="Languages" src="https://img.shields.io/badge/Prompt_languages-18-111?style=flat-square">
+  <a href="https://lemgen.org"><img alt="LemGen" src="https://img.shields.io/badge/Powered_by-LemGen-111?style=flat-square"></a>
+  <a href="LICENSE"><img alt="MIT" src="https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square"></a>
 </p>
 
 <p align="center">
   <a href="#快速开始">快速开始</a> ·
-  <a href="#工具能力">工具能力</a> ·
-  <a href="#提示词库">提示词库</a> ·
-  <a href="#客户端配置">客户端配置</a> ·
-  <a href="README.md">English</a>
+  <a href="#功能">功能</a> ·
+  <a href="#语言支持">语言支持</a> ·
+  <a href="#客户端配置">客户端</a> ·
+  <a href="#提示词库">提示词库</a>
+</p>
+
+<p align="center">
+  <a href="README.md">English</a> |
+  <strong>中文</strong> |
+  <a href="docs/i18n/README.ja.md">日本語</a> |
+  <a href="docs/i18n/README.ko.md">한국어</a> |
+  <a href="docs/i18n/README.es.md">Español</a> |
+  <a href="docs/i18n/README.fr.md">Français</a> |
+  <a href="docs/i18n/README.de.md">Deutsch</a> |
+  <a href="docs/i18n/README.pt.md">Português</a>
 </p>
 
 ---
 
-## 为什么做这个
+## 这是什么？
 
-大多数 AI 编程 Agent 很会写代码和文字，但做视觉创意时容易空想：没有参考图、没有真实 prompt、也不知道不同模型该怎么写。LemGen MCP 给它们补上视觉工具箱：
+LemGen AI Design MCP 会把 AI 编程 Agent 变成一个可实际使用的视觉创意助手。它不是让 Agent 凭空编提示词，而是给 Agent 一套完整工具：可搜索的提示词库、提示词增强、多语言提示词处理、模型信息、本地偏好，以及可选的 LemGen 图片/视频生成能力。
 
-- 先搜索真实提示词库，而不是凭空编 prompt。
-- 把完整 prompt、预览图、模型、标签、来源链接拉进上下文。
-- 把一句粗略想法扩写成可生成的专业提示词。
-- 用户确认后，通过 LemGen 生成图片或视频。
-- 搜索、灵感、增强、模型列表全部免费；只有生成需要 API Key。
+适合让 Agent 完成：
 
-这套流程更适合实际创作：找灵感、定方向、写 prompt、确认后生成。
+- 写 prompt 前先查真实视觉参考；
+- 查看完整 prompt、预览图、视频、模型、标签和来源链接；
+- 在多种语言之间翻译、润色、改写提示词；
+- 把一句粗略想法扩写成可生成的图片或视频 prompt；
+- 用户确认最终 prompt 后，再调用 LemGen 生成图片或视频。
 
-## 真实示例
+搜索、灵感、增强、模型列表和本地偏好都是免费工具，不需要 API Key。生成图片/视频需要在 [LemGen](https://lemgen.org) 获取 `LEMGEN_API_TOKEN`。
+
+## 预览
 
 <p align="center">
   <a href="https://lemgen.org/prompt/2071424170383364525"><img src="https://lemgen.org/lemgen/api-image-tweets-2071424170383364525-0-1adbcf3d.jpg" width="24%" alt="Editorial lifestyle prompt"></a>
@@ -46,27 +62,27 @@
 
 ## 快速开始
 
-只用免费工具时不需要 API Key：
+现在可以直接从 GitHub 安装：
 
 ```json
 {
   "mcpServers": {
     "lemgen": {
       "command": "npx",
-      "args": ["-y", "lemgen@latest"]
+      "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"]
     }
   }
 }
 ```
 
-如果要生成图片或视频，在 https://lemgen.org 创建 API Key，然后配置：
+如果要开启生成能力，加入 LemGen Token：
 
 ```json
 {
   "mcpServers": {
     "lemgen": {
       "command": "npx",
-      "args": ["-y", "lemgen@latest"],
+      "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"],
       "env": {
         "LEMGEN_API_TOKEN": "sk_your_key_here"
       }
@@ -75,87 +91,125 @@
 }
 ```
 
-本地开发：
+npm 包发布后，也可以改成：
 
 ```bash
-pnpm install
-pnpm build
-node bin/lemgen-mcp.js
+npx -y lemgen@latest
 ```
 
-## 工具能力
+## 功能
 
-| 工具 | 免费 | 做什么 | 适合场景 |
+| 能力 | 工具 | 免费 | Agent 能拿到什么 |
 | --- | --- | --- | --- |
-| `search_gallery` | 是 | 搜索 4,533 条精选 prompt，返回预览图和来源链接。 | 找灵感、找风格、找案例。 |
-| `get_inspiration` | 是 | 获取完整 prompt、图片/视频、模型、标签和 LemGen 链接。 | 用户选中了某个搜索结果。 |
-| `enhance_prompt` | 是 | 把一句短想法扩写成专业图片/视频 prompt。 | “做个香水广告”“科技海报”这类需求。 |
-| `list_models` | 是 | 查看模型能力、比例、分辨率和参考图限制。 | 用户问该用什么模型。 |
-| `prompt_tools` | 是 | 翻译、润色、改写 prompt。 | 用户已有 prompt，但想优化。 |
-| `manage_preferences` | 是 | 保存本地风格、模型、比例、收藏偏好。 | 用户说“记住这个风格”。 |
-| `generate_image` | 需 Key | 调用 LemGen 生成图片。 | 用户确认最终 prompt 后。 |
-| `generate_video` | 需 Key | 调用 LemGen 生成视频。 | 用户明确确认视频生成后。 |
+| 提示词搜索 | `search_gallery` | 是 | 带预览图/视频和 LemGen 来源链接的提示词结果。 |
+| 完整灵感 | `get_inspiration` | 是 | 完整 prompt、模型、标签、作者、热度、图片/视频、来源 URL。 |
+| 提示词扩写 | `enhance_prompt` | 是 | 从一句粗略想法扩写出结构化专业 prompt。 |
+| 模型参考 | `list_models` | 是 | 模型、媒体类型、比例、分辨率、参考图限制和适用场景。 |
+| 多语言处理 | `prompt_tools` | 是 | 翻译、润色、改写图片/视频 prompt。 |
+| 本地偏好 | `manage_preferences` | 是 | 本地保存风格、模型、比例、分辨率和收藏 prompt。 |
+| 图片生成 | `generate_image` | 需 Token | 创建 LemGen 图片生成任务并返回状态和结果 URL。 |
+| 视频生成 | `generate_video` | 需 Token | 创建 LemGen 视频生成任务；Agent 会先要求用户确认。 |
 
-## 工作流示例
+## 语言支持
 
-### 1. 找视觉方向
+LemGen MCP 面向多语言创作团队。Agent 回复应该跟随用户语言，模型名和 API 参数保持英文。
 
-用户：
+`prompt_tools.targetLanguage` 支持：
 
-> 找一些黑色磨砂香水瓶的产品摄影灵感。
+| Code | 语言 | Code | 语言 | Code | 语言 |
+| --- | --- | --- | --- | --- | --- |
+| `en` | English | `zh` | Chinese | `ja` | Japanese |
+| `ko` | Korean | `es` | Spanish | `fr` | French |
+| `de` | German | `pt` | Portuguese | `it` | Italian |
+| `nl` | Dutch | `ru` | Russian | `ar` | Arabic |
+| `hi` | Hindi | `id` | Indonesian | `vi` | Vietnamese |
+| `th` | Thai | `tr` | Turkish | `pl` | Polish |
 
-Agent：
+示例：
 
-1. 调用 `search_gallery(query="matte black perfume product photography")`
-2. 展示预览图、模型、prompt id、来源链接
-3. 用户选中后调用 `get_inspiration`
-4. 基于参考 prompt 改写成用户自己的产品 prompt
+```json
+{ "action": "translate", "targetLanguage": "ja", "mediaType": "image" }
+```
 
-### 2. 优化粗糙想法
+```json
+{ "action": "polish", "mediaType": "video" }
+```
 
-用户：
+更多说明见 [docs/clients.md](docs/clients.md) 和
+[docs/languages.md](docs/languages.md)。
 
-> 给一个新的 AI 设计工具做海报。
+## 客户端配置
 
-Agent：
+### Claude Code
 
-1. 调用 `enhance_prompt(idea="poster for a new AI design tool", style="poster")`
-2. 解释视觉方向
-3. 等用户确认后再生成
+从这个 GitHub 仓库安装：
 
-### 3. 生成图片
+```bash
+/plugin marketplace add aithink001/lemgen-ai-design-mcp
+/plugin install lemgen@lemgen-marketplace
+```
 
-用户：
+安装后重启 Claude Code。
 
-> 可以，按 16:9 生成。
+### Cursor
 
-Agent：
+加入 Cursor MCP 配置：
 
-1. 调用 `generate_image(prompt=..., aspectRatio="16:9")`
-2. 返回 generation id、状态、图片 URL
-3. 不编造自己没看见的图片描述
+```json
+{
+  "mcpServers": {
+    "lemgen": {
+      "command": "npx",
+      "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"],
+      "env": {
+        "LEMGEN_API_TOKEN": "sk_your_key_here"
+      }
+    }
+  }
+}
+```
 
-### 4. 生成视频
+### Codex
 
-视频更慢也更贵，Agent 必须先确认：
+```bash
+codex mcp add lemgen -- npx -y github:aithink001/lemgen-ai-design-mcp
+```
 
-> 这会创建一个 LemGen 视频任务，要继续吗？
+如果要生成图片/视频，在 Codex 的 MCP server 环境变量里加入 `LEMGEN_API_TOKEN`。
 
-用户确认后再调用 `generate_video`。
+### Windsurf / Roo Code / Cline
+
+使用同一段 MCP 配置：
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"],
+  "env": {
+    "LEMGEN_API_TOKEN": "sk_your_key_here"
+  }
+}
+```
+
+### OpenClaw
+
+使用内置 skill：
+
+```txt
+openclaw/SKILL.md
+```
+
+它定义了推荐工作流：先找灵感、再增强 prompt、确认后生成，视频必须单独确认。
 
 ## 提示词库
 
-本仓库内置 `data/trending-prompts.json`。
-
-当前快照：
+本仓库内置 `data/trending-prompts.json`，由 LemGen 导出。
 
 | 类型 | 数量 |
 | --- | ---: |
 | 图片 prompt | 2,593 |
 | 视频 prompt | 1,940 |
 | 总计 | 4,533 |
-
-模型覆盖：
 
 | 模型 | 数量 |
 | --- | ---: |
@@ -165,7 +219,7 @@ Agent：
 | Midjourney | 104 |
 | 其他图片模型 | 65 |
 
-数据字段：
+Schema：
 
 ```ts
 type GalleryPrompt = {
@@ -190,66 +244,15 @@ type GalleryPrompt = {
 
 https://github.com/aithink001/lemgen-trending-prompts
 
-## 客户端配置
-
-### Claude Code Plugin
+## 开发
 
 ```bash
-/plugin marketplace add aithink001/lemgen-ai-design-mcp
-/plugin install lemgen@lemgen-marketplace
+pnpm install
+pnpm validate
+pnpm inspect
 ```
 
-安装后重启 Claude Code。
-
-### Cursor
-
-把下面配置加入 Cursor MCP 配置：
-
-```json
-{
-  "mcpServers": {
-    "lemgen": {
-      "command": "npx",
-      "args": ["-y", "lemgen@latest"],
-      "env": {
-        "LEMGEN_API_TOKEN": "sk_your_key_here"
-      }
-    }
-  }
-}
-```
-
-### Codex
-
-```bash
-codex mcp add lemgen -- npx -y lemgen@latest
-```
-
-如需生成能力，在 Codex MCP 配置里给该 server 添加 `LEMGEN_API_TOKEN`。
-
-### Windsurf / Roo Code / Cline
-
-使用同样的 MCP server 配置：
-
-```json
-{
-  "command": "npx",
-  "args": ["-y", "lemgen@latest"],
-  "env": {
-    "LEMGEN_API_TOKEN": "sk_your_key_here"
-  }
-}
-```
-
-### OpenClaw
-
-使用内置 skill：
-
-```txt
-openclaw/SKILL.md
-```
-
-它定义了推荐工作流：先找灵感、再增强 prompt、确认后生成，视频必须单独确认。
+`pnpm validate` 会执行 TypeScript、构建、品牌扫描和 MCP smoke test。
 
 ## 环境变量
 
@@ -261,35 +264,20 @@ openclaw/SKILL.md
 | `LEMGEN_VIDEO_OUTPUT_DIR` | `~/Movies/lemgen` | 预留给后续 CLI 视频保存。 |
 | `LEMGEN_PREFERENCES_PATH` | `~/.lemgen/preferences.json` | 本地偏好文件。 |
 
-## 开发
+## 原则
 
-```bash
-pnpm install
-pnpm validate
-pnpm inspect
-```
-
-`validate` 会执行：
-
-- TypeScript 类型检查
-- 构建
-- 品牌扫描
-- MCP client smoke test
-
-## 设计原则
-
-- 免费发现优先，生成能力后置。
-- 昂贵的视频任务必须先确认。
-- 只返回真实 URL 和 ID，不编造图片内容。
-- 所有 prompt 都链接回 LemGen 来源页。
-- 公开文档和数据保持品牌干净。
+- 搜索和灵感免费，生成能力按需开启。
+- 视频生成必须先获得用户明确确认。
+- 返回真实 ID 和 URL，不编造没验证过的画面描述。
+- 公开数据都链接回 LemGen。
+- 文档和包信息保持品牌干净，避免重复品牌信号。
 
 ## Roadmap
 
 - 发布 `lemgen` npm 包。
-- 增加 `https://mcp.lemgen.org/mcp` remote MCP。
-- 增加更强的语义搜索。
-- 做产品摄影、Logo、人物、海报、视频广告等 prompt packs。
+- 增加 hosted remote MCP endpoint。
+- 为提示词库增加语义搜索。
+- 增加产品摄影、Logo、人物、海报、视频广告等 prompt packs。
 - 增加面向 shell/CI 的一键生成 CLI。
 
 ## License

@@ -1,43 +1,61 @@
-<h1 align="center">LemGen AI Design MCP</h1>
+<h1 align="center">
+  LemGen AI Design MCP
+</h1>
 
 <p align="center">
-  <strong>Turn Claude Code, Cursor, Codex, Windsurf, Roo Code, and OpenClaw into a visual creative assistant.</strong>
+  <strong>A visual creation MCP for Claude Code, Cursor, Codex, Windsurf, Roo Code, OpenClaw, and any MCP-compatible agent.</strong>
   <br>
-  <sub>4,533 curated AI image/video prompts · GPT Image · Nano Banana · Seedance · Midjourney · prompt enhancement · local preferences · LemGen generation tools</sub>
+  <sub>4,533 curated AI image/video prompts · 18 prompt languages · GPT Image · Nano Banana · Seedance · Midjourney · LemGen generation API</sub>
 </p>
 
 <p align="center">
   <a href="https://github.com/aithink001/lemgen-ai-design-mcp/actions"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/aithink001/lemgen-ai-design-mcp/validate.yml?branch=main&style=flat-square"></a>
-  <a href="https://github.com/aithink001/lemgen-ai-design-mcp"><img alt="MCP" src="https://img.shields.io/badge/MCP-Server-blue?style=flat-square"></a>
-  <a href="https://lemgen.org"><img alt="LemGen" src="https://img.shields.io/badge/Powered%20by-LemGen-111?style=flat-square"></a>
-  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square"></a>
+  <img alt="MCP Server" src="https://img.shields.io/badge/Type-MCP_Server-blue?style=flat-square">
+  <img alt="Languages" src="https://img.shields.io/badge/Prompt_languages-18-111?style=flat-square">
+  <a href="https://lemgen.org"><img alt="LemGen" src="https://img.shields.io/badge/Powered_by-LemGen-111?style=flat-square"></a>
+  <a href="LICENSE"><img alt="MIT" src="https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square"></a>
 </p>
 
 <p align="center">
   <a href="#quick-start">Quick Start</a> ·
-  <a href="#what-you-can-do">Tools</a> ·
-  <a href="#prompt-library">Prompt Library</a> ·
-  <a href="#client-setup">Client Setup</a> ·
-  <a href="README.zh-CN.md">中文</a>
+  <a href="#features">Features</a> ·
+  <a href="#language-support">Languages</a> ·
+  <a href="#client-setup">Clients</a> ·
+  <a href="#prompt-library">Prompt Library</a>
+</p>
+
+<p align="center">
+  <strong>English</strong> |
+  <a href="README.zh-CN.md">中文</a> |
+  <a href="docs/i18n/README.ja.md">日本語</a> |
+  <a href="docs/i18n/README.ko.md">한국어</a> |
+  <a href="docs/i18n/README.es.md">Español</a> |
+  <a href="docs/i18n/README.fr.md">Français</a> |
+  <a href="docs/i18n/README.de.md">Deutsch</a> |
+  <a href="docs/i18n/README.pt.md">Português</a>
 </p>
 
 ---
 
-## Why This Exists
+## What Is This?
 
-Most AI coding agents are good at writing text and code, but weak at visual
-creative work. LemGen MCP gives them a visual toolkit:
+LemGen AI Design MCP turns an AI coding agent into a practical visual creative
+assistant. Instead of asking the agent to invent prompts from nothing, it gives
+the agent a searchable prompt library, prompt enhancement tools, model metadata,
+local preferences, and optional image/video generation through LemGen.
 
-- Search a real prompt gallery before inventing prompts from scratch.
-- Pull full prompts, images, model metadata, and source links into the agent context.
-- Expand rough ideas into production-grade prompts.
-- Generate images or videos through LemGen when the user approves the final prompt.
-- Keep all exploratory tools free and local-friendly; only generation needs a token.
+Use it when you want your agent to:
 
-The result is a cleaner workflow: browse inspiration, craft the direction, then
-generate without leaving your agent.
+- find visual references before writing a prompt;
+- inspect full prompt examples with images, videos, model names, tags, and source links;
+- translate, polish, or improve prompts across multiple languages;
+- expand rough ideas into production-ready image or video prompts;
+- generate images or videos only after the user approves the final prompt.
 
-## See The Library
+Free tools work without an API key. Generation tools require
+`LEMGEN_API_TOKEN` from [LemGen](https://lemgen.org).
+
+## Preview
 
 <p align="center">
   <a href="https://lemgen.org/prompt/2071424170383364525"><img src="https://lemgen.org/lemgen/api-image-tweets-2071424170383364525-0-1adbcf3d.jpg" width="24%" alt="Editorial lifestyle prompt"></a>
@@ -48,28 +66,27 @@ generate without leaving your agent.
 
 ## Quick Start
 
-Free inspiration tools work without any API key:
+Install directly from GitHub today:
 
 ```json
 {
   "mcpServers": {
     "lemgen": {
       "command": "npx",
-      "args": ["-y", "lemgen@latest"]
+      "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"]
     }
   }
 }
 ```
 
-To enable `generate_image` and `generate_video`, create an API key at
-https://lemgen.org and add it to your MCP config:
+Enable generation by adding your LemGen token:
 
 ```json
 {
   "mcpServers": {
     "lemgen": {
       "command": "npx",
-      "args": ["-y", "lemgen@latest"],
+      "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"],
       "env": {
         "LEMGEN_API_TOKEN": "sk_your_key_here"
       }
@@ -78,87 +95,128 @@ https://lemgen.org and add it to your MCP config:
 }
 ```
 
-During local development, run from this repository:
+After the npm package is published, the same server can be installed with:
 
 ```bash
-pnpm install
-pnpm build
-node bin/lemgen-mcp.js
+npx -y lemgen@latest
 ```
 
-## What You Can Do
+## Features
 
-| Tool | Free | What it does | When to use it |
+| Capability | Tool | Free | What the agent gets |
 | --- | --- | --- | --- |
-| `search_gallery` | Yes | Searches 4,533 curated prompts with preview media and source links. | The user wants ideas, examples, style references, or prompt recipes. |
-| `get_inspiration` | Yes | Returns the full prompt, images/video, model, tags, stats, and LemGen URL. | The user picked an item from search results. |
-| `enhance_prompt` | Yes | Turns a rough idea into a detailed image/video prompt. | The user says something short like "luxury perfume ad". |
-| `list_models` | Yes | Lists supported image/video models, ratios, resolutions, and reference limits. | The user asks which model to use. |
-| `prompt_tools` | Yes | Translates, polishes, or improves prompts. | The user already has a prompt but wants it cleaner. |
-| `manage_preferences` | Yes | Stores local style, model, ratio, and favorite prompt preferences. | The user says "remember this style". |
-| `generate_image` | Token | Submits an image generation job to LemGen. | The user approved a final image prompt. |
-| `generate_video` | Token | Submits a video generation job to LemGen. | The user explicitly confirmed video generation. |
+| Prompt search | `search_gallery` | Yes | Ranked image/video prompt results with preview media and LemGen links. |
+| Full inspiration | `get_inspiration` | Yes | Complete prompt, model, tags, author, stats, images/videos, and source URL. |
+| Prompt expansion | `enhance_prompt` | Yes | A structured production prompt from a rough visual idea. |
+| Model guidance | `list_models` | Yes | Supported models, media type, ratios, resolutions, reference limits, and strengths. |
+| Prompt translation | `prompt_tools` | Yes | Translation, polish, and improvement workflows for image/video prompts. |
+| Local memory | `manage_preferences` | Yes | Style, model, ratio, resolution, and favorite prompt IDs stored locally. |
+| Image generation | `generate_image` | Token | LemGen image generation job with status and result URLs. |
+| Video generation | `generate_video` | Token | LemGen video generation job; agents are instructed to ask before calling it. |
 
-## Example Workflows
+## Language Support
 
-### 1. Find A Visual Direction
+LemGen MCP is built for multilingual creative teams. Agent replies should follow
+the user's language, while model names and API parameters stay in English.
 
-User:
+`prompt_tools.targetLanguage` supports:
 
-> Find product photography inspiration for a matte black perfume bottle.
+| Code | Language | Code | Language | Code | Language |
+| --- | --- | --- | --- | --- | --- |
+| `en` | English | `zh` | Chinese | `ja` | Japanese |
+| `ko` | Korean | `es` | Spanish | `fr` | French |
+| `de` | German | `pt` | Portuguese | `it` | Italian |
+| `nl` | Dutch | `ru` | Russian | `ar` | Arabic |
+| `hi` | Hindi | `id` | Indonesian | `vi` | Vietnamese |
+| `th` | Thai | `tr` | Turkish | `pl` | Polish |
 
-Agent:
+Examples:
 
-1. Calls `search_gallery(query="matte black perfume product photography")`.
-2. Shows preview URLs and prompt IDs.
-3. Calls `get_inspiration(id=...)` when the user picks one.
-4. Adapts the prompt for the user's product.
+```json
+{ "action": "translate", "targetLanguage": "ja", "mediaType": "image" }
+```
 
-### 2. Improve A Weak Prompt
+```json
+{ "action": "polish", "mediaType": "video" }
+```
 
-User:
+More setup notes are in [docs/clients.md](docs/clients.md) and
+[docs/languages.md](docs/languages.md).
 
-> Make a poster for a new AI design tool.
+## Client Setup
 
-Agent:
+### Claude Code
 
-1. Calls `enhance_prompt(idea="poster for a new AI design tool", style="poster")`.
-2. Explains the visual direction.
-3. Asks for approval before generation.
+Install from this GitHub repository:
 
-### 3. Generate An Image
+```bash
+/plugin marketplace add aithink001/lemgen-ai-design-mcp
+/plugin install lemgen@lemgen-marketplace
+```
 
-User:
+Restart Claude Code after installation.
 
-> Looks good, generate it in 16:9.
+### Cursor
 
-Agent:
+Add to Cursor MCP config:
 
-1. Calls `generate_image(prompt=..., aspectRatio="16:9")`.
-2. Returns the generation ID, status, and image URLs.
-3. Does not invent a visual description it cannot verify.
+```json
+{
+  "mcpServers": {
+    "lemgen": {
+      "command": "npx",
+      "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"],
+      "env": {
+        "LEMGEN_API_TOKEN": "sk_your_key_here"
+      }
+    }
+  }
+}
+```
 
-### 4. Generate A Video
+### Codex
 
-Video is slower and more expensive, so the agent should confirm first:
+```bash
+codex mcp add lemgen -- npx -y github:aithink001/lemgen-ai-design-mcp
+```
 
-> This will create a LemGen video job. Continue?
+For generation, add `LEMGEN_API_TOKEN` to the MCP server environment in your
+Codex config.
 
-After confirmation it calls `generate_video`.
+### Windsurf / Roo Code / Cline
+
+Use the same MCP server block:
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "github:aithink001/lemgen-ai-design-mcp"],
+  "env": {
+    "LEMGEN_API_TOKEN": "sk_your_key_here"
+  }
+}
+```
+
+### OpenClaw
+
+Use the included skill:
+
+```txt
+openclaw/SKILL.md
+```
+
+It defines the recommended workflow for inspiration search, prompt enhancement,
+generation confirmation, and video safety.
 
 ## Prompt Library
 
-This repository ships with `data/trending-prompts.json`.
-
-Current snapshot:
+This repository ships with `data/trending-prompts.json`, exported from LemGen.
 
 | Type | Count |
 | --- | ---: |
 | Image prompts | 2,593 |
 | Video prompts | 1,940 |
 | Total | 4,533 |
-
-Model coverage:
 
 | Model | Count |
 | --- | ---: |
@@ -168,7 +226,7 @@ Model coverage:
 | Midjourney | 104 |
 | Other image models | 65 |
 
-Each item includes:
+Schema:
 
 ```ts
 type GalleryPrompt = {
@@ -189,72 +247,19 @@ type GalleryPrompt = {
 };
 ```
 
-The companion data-only repository is:
+Data-only repository:
 
 https://github.com/aithink001/lemgen-trending-prompts
 
-## Client Setup
-
-### Claude Code Plugin
+## Development
 
 ```bash
-/plugin marketplace add aithink001/lemgen-ai-design-mcp
-/plugin install lemgen@lemgen-marketplace
+pnpm install
+pnpm validate
+pnpm inspect
 ```
 
-Restart Claude Code after installation.
-
-### Cursor
-
-Add this to your Cursor MCP config:
-
-```json
-{
-  "mcpServers": {
-    "lemgen": {
-      "command": "npx",
-      "args": ["-y", "lemgen@latest"],
-      "env": {
-        "LEMGEN_API_TOKEN": "sk_your_key_here"
-      }
-    }
-  }
-}
-```
-
-### Codex
-
-```bash
-codex mcp add lemgen -- npx -y lemgen@latest
-```
-
-For generation, add `LEMGEN_API_TOKEN` to the MCP server environment in your
-Codex config.
-
-### Windsurf / Roo Code / Cline
-
-Use the same MCP server block:
-
-```json
-{
-  "command": "npx",
-  "args": ["-y", "lemgen@latest"],
-  "env": {
-    "LEMGEN_API_TOKEN": "sk_your_key_here"
-  }
-}
-```
-
-### OpenClaw
-
-Use the included skill:
-
-```txt
-openclaw/SKILL.md
-```
-
-It defines the recommended workflow for inspiration search, prompt enhancement,
-generation confirmation, and video safety.
+`pnpm validate` runs TypeScript, build, brand scan, and an MCP smoke test.
 
 ## Environment Variables
 
@@ -266,35 +271,20 @@ generation confirmation, and video safety.
 | `LEMGEN_VIDEO_OUTPUT_DIR` | `~/Movies/lemgen` | Reserved for future CLI video saving. |
 | `LEMGEN_PREFERENCES_PATH` | `~/.lemgen/preferences.json` | Local preferences file. |
 
-## Development
+## Principles
 
-```bash
-pnpm install
-pnpm validate
-pnpm inspect
-```
-
-Validation runs:
-
-- TypeScript typecheck
-- Build
-- Brand scan
-- MCP client smoke test
-
-## Design Principles
-
-- Free discovery first; generation second.
-- Never generate expensive video without explicit confirmation.
-- Return actual URLs and IDs; do not hallucinate what an image looks like.
-- Keep prompt data source-linked to LemGen.
-- Keep public docs and data clean of legacy or duplicate-brand signals.
+- Search and inspiration are free; generation is opt-in.
+- Video generation requires explicit confirmation.
+- Responses return real IDs and URLs, not guessed visual descriptions.
+- Public data is source-linked to LemGen.
+- Documentation and package metadata stay clean of duplicate-brand signals.
 
 ## Roadmap
 
 - Publish the `lemgen` npm package.
-- Add a remote MCP endpoint at `https://mcp.lemgen.org/mcp`.
-- Add richer semantic search over the prompt library.
-- Add generated prompt packs for product photography, logos, portraits, posters, and video ads.
+- Add a hosted remote MCP endpoint.
+- Add semantic search over the prompt library.
+- Add focused prompt packs for product photography, logos, portraits, posters, and video ads.
 - Add one-shot CLI generation commands for shell and CI workflows.
 
 ## License

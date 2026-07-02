@@ -21,7 +21,7 @@
   <a href="#features">Features</a> ·
   <a href="#language-support">Languages</a> ·
   <a href="#client-setup">Clients</a> ·
-  <a href="https://clawhub.ai/skills/lemgen-ai-design">OpenClaw Skill</a> ·
+  <a href="https://clawhub.ai/aithink001/skills/lemgen-ai-design">OpenClaw Skill</a> ·
   <a href="#prompt-library">Prompt Library</a>
 </p>
 
@@ -209,7 +209,7 @@ clawhub install lemgen-ai-design
 Skill page:
 
 ```txt
-https://clawhub.ai/skills/lemgen-ai-design
+https://clawhub.ai/aithink001/skills/lemgen-ai-design
 ```
 
 The source skill is included in this repository:

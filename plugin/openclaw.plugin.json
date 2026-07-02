@@ -1,7 +1,7 @@
 {
   "name": "lemgen-ai-design",
   "displayName": "LemGen AI Design",
-  "description": "AI image/video prompt library and LemGen generation tools for OpenClaw.",
+  "description": "Search curated AI image/video prompts, enhance prompts, and generate with LemGen inside OpenClaw.",
   "version": "0.1.0",
   "author": "LemGen",
   "homepage": "https://lemgen.org",

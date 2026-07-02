@@ -21,6 +21,7 @@
   <a href="#功能">功能</a> ·
   <a href="#语言支持">语言支持</a> ·
   <a href="#客户端配置">客户端</a> ·
+  <a href="https://clawhub.ai/skills/lemgen-ai-design">OpenClaw Skill</a> ·
   <a href="#提示词库">提示词库</a>
 </p>
 
@@ -193,7 +194,19 @@ codex mcp add lemgen -- npx -y github:aithink001/lemgen-ai-design-mcp
 
 ### OpenClaw
 
-使用内置 skill：
+从 ClawHub 安装：
+
+```bash
+clawhub install lemgen-ai-design
+```
+
+Skill 页面：
+
+```txt
+https://clawhub.ai/skills/lemgen-ai-design
+```
+
+本仓库同时保留源文件：
 
 ```txt
 openclaw/SKILL.md
